@@ -11,11 +11,11 @@ include 'connect.php';
 if(!isset($_POST['submit'] ))
 
 {
-    echo "Not successfful";
+    //echo "Not successfful";
 
 }
 else{
-    echo "Successful";
+   // echo "Successful";
 }
 
 $updatequery ="UPDATE users SET firstname=?, lastname=?, email=?, password=? WHERE id=?";
@@ -34,7 +34,7 @@ else{
 $mysqli->close();
 
 $populatequery ="SELECT * from users WHERE ID ='".$_GET['id']."'";
-$result=$mysqli->query ($populatequery);
+$result=$stmt->prepare ($populatequery);
 if($result){
     if($result->num_rows> 0 ){
         while($row = $result -> fetch_assoc())
